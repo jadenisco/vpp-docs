@@ -16,6 +16,7 @@ The Developers section covers the following areas:
    :maxdepth: 2
 
    building
+   running_vpp
    softwarearchitecture
    infrastructure
    vlib
@@ -23,4 +24,7 @@ The Developers section covers the following areas:
    vnet
    featurearcs
    bihash
+   vpp_api_module
+   binary_api_support
+   sample_plugin
 
