@@ -2,8 +2,8 @@
 
 .. toctree::
 
-Connecting two FD.io VPP Instances
-----------------------------------
+Connecting Two FD.io VPP Instances
+==================================
 
 .. _background-1:
 
@@ -14,7 +14,7 @@ for a control channel to set up that shared memory.
 .. _skills-to-be-learned-1:
 
 Skills to be Learned
-^^^^^^^^^^^^^^^^^^^^
+---------------------
 
 You will learn the following new skill in this exercise:
 
@@ -30,7 +30,7 @@ learned in previous exercises:
 .. _topology-1:
 
 Topology
-^^^^^^^^
+---------
 
 .. figure:: /_images/Connecting_two_vpp_instances_with_memif.png
    :alt: Connect two FD.io VPP topology
@@ -40,7 +40,7 @@ Topology
 .. _initial-state-1:
 
 Initial state
-^^^^^^^^^^^^^
+--------------
 
 The initial state here is presumed to be the final state from the
 exercise `Create an
@@ -49,7 +49,7 @@ Interface <VPP/Progressive_VPP_Tutorial#Exercise:_Create_an_Interface>`__
 .. _action-running-a-second-vpp-instances-1:
 
 Running a second FD.io VPP instances
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------
 
 You should already have a FD.io VPP instance running named: vpp1.
 
@@ -58,7 +58,7 @@ Run a second FD.io VPP instance named: vpp2.
 .. _action-create-memif-interface-on-vpp1-1:
 
 Create memif interface on vpp1
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------
 
 Create a memif interface on vpp1:
 
@@ -78,7 +78,7 @@ Use your previously used skills to:
 .. _action-create-memif-interface-on-vpp2-1:
 
 Create memif interface on vpp2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 
 We want vpp2 to pick up the 'slave' role using the same
 run/vpp/memif-vpp1vpp2 socket file
@@ -99,7 +99,7 @@ Use your previously used skills to:
 .. _action-ping-from-vpp1-to-vpp2-1:
 
 Ping from vpp1 to vpp2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------
 
 Ping 10.10.2.2 from vpp1
 
