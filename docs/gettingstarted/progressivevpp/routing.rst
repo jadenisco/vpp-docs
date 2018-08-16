@@ -60,6 +60,7 @@ Setup return route on vpp2
 
 .. code-block:: console
 
+   $ sudo vppctl -s /run/vpp/cli-vpp2.sock
     vpp# ip route add 10.10.1.0/24  via 10.10.2.1
 
 Ping from host through vpp1 to vpp2

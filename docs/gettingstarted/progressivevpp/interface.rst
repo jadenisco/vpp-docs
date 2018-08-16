@@ -74,7 +74,7 @@ Display the result:
 
 .. code-block:: console
 
-  $ sudo ip addr show vpp1host
+  $ ip addr show vpp1host
   5: vpp1host@vpp1out: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
     link/ether e2:0f:1e:59:ec:f7 brd ff:ff:ff:ff:ff:ff
     inet 10.10.1.1/24 scope global vpp1host
@@ -84,6 +84,28 @@ Display the result:
 
 Create vpp host-interface
 --------------------------
+
+Make sure VPP is running, if not start it.
+
+.. code-block:: console
+
+    $ ps -eaf | grep vpp
+    vagrant   2141   903  0 05:28 pts/0    00:00:00 grep --color=auto vpp
+    # vpp is not running, so start it
+    $ sudo /usr/bin/vpp -c startup1.conf
+
+These commands are run from the vpp shell. Enter the VPP shell with the following
+command:
+
+.. code-block:: console
+
+    $ sudo vppctl -s /run/vpp/cli-vpp1.sock
+        _______    _        _   _____  ___
+     __/ __/ _ \  (_)__    | | / / _ \/ _ \
+     _/ _// // / / / _ \   | |/ / ___/ ___/
+     /_/ /____(_)_/\___/   |___/_/  /_/
+    
+    vpp#
 
 Create a host interface attached to **vpp1out**.
 

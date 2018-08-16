@@ -8,8 +8,8 @@ Connecting Two FD.io VPP Instances
 .. _background-1:
 
 memif is a very high performance, direct memory interface type which can
-be used between FD.io VPP instances to form a topology. It uses a file socket
-for a control channel to set up that shared memory.
+be used between FD.io VPP instances. It uses a file socket for a control channel
+to set up shared memory.
 
 .. _skills-to-be-learned-1:
 
@@ -55,21 +55,37 @@ You should already have a FD.io VPP instance running named: vpp1.
 
 Run a second FD.io VPP instance named: vpp2.
 
+.. code-block:: console
+
+    $ sudo /usr/bin/vpp -c startup2.conf
+    ....
+    $ sudo vppctl -s /run/vpp/cli-vpp2.sock
+        _______    _        _   _____  ___
+     __/ __/ _ \  (_)__    | | / / _ \/ _ \
+     _/ _// // / / / _ \   | |/ / ___/ ___/
+     /_/ /____(_)_/\___/   |___/_/  /_/
+    
+    vpp# show version
+    vpp v18.07-release built by root on c469eba2a593 at Mon Jul 30 23:27:03 UTC 2018
+    vpp# quit
+
 .. _action-create-memif-interface-on-vpp1-1:
 
 Create memif interface on vpp1
 -------------------------------
 
-Create a memif interface on vpp1:
+Create a memif interface on vpp1. To connect to the instance vpp1 use the
+socket **/run/vpp/cli-vpp1.sock**
 
 .. code-block:: console
 
+   $ sudo vppctl -s /run/vpp/cli-vpp1.sock
    vpp# create interface memif id 0 master
 
 This will create an interface on vpp1 memif0/0 using /run/vpp/memif as
 its socket file. The role of vpp1 for this memif inteface is 'master'.
 
-Use your previously used skills to:
+With what you have learned:
 
 #. Set the memif0/0 state to up.
 #. Assign IP address 10.10.2.1/24 to memif0/0

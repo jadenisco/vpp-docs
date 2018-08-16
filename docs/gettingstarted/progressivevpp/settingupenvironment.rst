@@ -85,36 +85,70 @@ After setting up Vagrant, use these commands on your Vagrant directory to boot t
 Install VPP
 ------------
 
-Now that the VM is updated, install the VPP packages.
+Now that the VM is updated, we will install the VPP packages.
 
-Install VPP with the following commands:
+For more on installing VPP please refer to :ref:`installingVPP`.
+
+For this tutorial we need to install VPP by modifying the file
+**/etc/apt/sources.list.d/99fd.io.list**. Write this file with the following contents:
+
+You will need to be root to do this.
+
+.. code-block:: console
+
+   deb [trusted=yes] https://nexus.fd.io/content/repositories/fd.io.ubuntu.xenial.main/ ./
+
+Then execute the following commands.
 
 .. code-block:: console
 
    $ sudo bash
-   # echo "deb [trusted=yes] https://nexus.fd.io/content/repositories/fd.io.ubuntu.xenial.main/ ./" > /etc/apt/sources.list.d/99fd.io.list
    # apt-get update
    # apt-get install vpp-lib vpp vpp-plugins
    #
 
-Stop VPP for this tutorial we will create our own instances.
+Stop VPP for this tutorial. We will be creating our own instances of VPP.
 
 .. code-block:: console
 
    # service vpp stop
    #
 
-For more on installing VPP please refer to :ref:`installingVPP`.
 
 Create some startup files
 --------------------------
 
-We will some startup files for the use of this tutorial. Typical you will
+We will create some startup files for the use of this tutorial. Typically you will
 modify the startup.conf file found in /etc/vpp/startup.conf. For more information
 on this file refer to :ref:`startup`.
 
+When running multiple VPP instances, each instance needs to have
+specified a 'name' or 'prefix'. In the example below, the 'name' or 'prefix'
+is "vpp1". Note that only one instance can use the dpdk plugin, since this
+plugin is trying to acquire a lock on a file. These startup files we create will
+disable the dpdk plugin.
+
+Also in our startup files notice **api-segment**. **api-segment {prefix vpp1}**
+tells FD.io VPP how to name the files in /dev/shm/ for your VPP instance
+differently from the default. **unix {cli-listen /run/vpp/cli-vpp1.sock}**
+tells vpp to use a non-default socket file when being addressed by vppctl.
+
+Now create 2 files named startup1.conf and startup2.conf with the following
+content. These files can be located anywhere. We specify the location when we
+start VPP.
+
+startup1.conf:
+
 .. code-block:: console
 
-   $ echo "unix {cli-listen /run/vpp/cli-vpp1.sock} api-segment { prefix vpp1 } plugins { plugin dpdk_plugin.so { disable } }" > startup1.conf
-   $ echo "unix {cli-listen /run/vpp/cli-vpp2.sock} api-segment { prefix vpp2 } plugins { plugin dpdk_plugin.so { disable } }" > startup2.conf
-   $
+   unix {cli-listen /run/vpp/cli-vpp1.sock}
+   api-segment { prefix vpp1 }
+   plugins { plugin dpdk_plugin.so { disable } }
+
+startup2.conf:
+
+.. code-block:: console
+
+   unix {cli-listen /run/vpp/cli-vpp2.sock}
+   api-segment { prefix vpp2 }
+   plugins { plugin dpdk_plugin.so { disable } }

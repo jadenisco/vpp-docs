@@ -25,4 +25,3 @@ For more information on using VPP with Virtual Box/Vagrant, please refer to :ref
    twovppinstances.rst
    routing.rst
    switching.rst
-   sourceNAT.rst
