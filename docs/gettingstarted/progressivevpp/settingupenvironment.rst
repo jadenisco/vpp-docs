@@ -90,9 +90,9 @@ Now that the VM is updated, we will install the VPP packages.
 For more on installing VPP please refer to :ref:`installingVPP`.
 
 For this tutorial we need to install VPP by modifying the file
-**/etc/apt/sources.list.d/99fd.io.list**. Write this file with the following contents:
+**/etc/apt/sources.list.d/99fd.io.list**.
 
-You will need to be root to do this.
+Write this file with the following contents:
 
 .. code-block:: console
 
